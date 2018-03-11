@@ -1,22 +1,12 @@
-import { version, Component } from 'inferno';
-import './registerServiceWorker';
-import Logo from './logo';
-import './App.css';
+import { Component } from 'inferno';
+import RootContainer from './RootContainer';
+import FormCard from './FormCard';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <Logo width="80" height="80" />
-          <h1>{`Welcome to Inferno ${version}`}</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <RootContainer>
+    <FormCard>Привет</FormCard>
+  </RootContainer>
+);
+    
 
 export default App;
