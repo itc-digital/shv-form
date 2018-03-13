@@ -14,6 +14,7 @@ import SelectFaculty from './SelectFaculty';
 import Textarea from './TypeFieldTextArea';
 import TextInput from './TextInput';
 import PhoneInput from './PhoneInput';
+import Submit from './Submit';
 
 const App = () => (
   <RootContainer>
@@ -34,7 +35,7 @@ const App = () => (
           <ItcLink href="https://vk.com/reu_itc" target="_blank">
             <img
               width="20px"
-              src={`${process.env.PUBLIC_URL}/img/it_fucking_c.png`}
+              src={`${process.env.PUBLIC_URL}/img/stamps.svg`}
             />
           </ItcLink>
         </FormCardTitle>
@@ -90,6 +91,11 @@ const App = () => (
             type="tel"
             name="phone"
           />
+          <FieldLabel required for="vkLink">
+            Страница ВКонтакте
+          </FieldLabel>
+          <TextInput id="vkLink" type="url" name="vkLink" maxlength="256" />
+
           <FieldLabel required for="experience">
             Опыт походов
           </FieldLabel>
@@ -101,7 +107,79 @@ const App = () => (
             placeholder="Сколько раз, куда, условия"
             maxlength="1024"
           />
+          <FieldLabel required for="otherExperience">
+            Другой полезный опыт
+          </FieldLabel>
+          <Textarea
+            id="otherExperience"
+            rows="1"
+            cols="5"
+            name="otherExperience"
+            placeholder="Страйкбол, спортивное ориентирование и т.д."
+            maxlength="1024"
+          />
+          <FieldLabel required for="inventoryAvailiable">
+            Имеющийся инвентарь
+          </FieldLabel>
+          <Textarea
+            id="inventoryAvailiable"
+            rows="1"
+            cols="5"
+            name="inventoryAvailiable"
+            placeholder="Палатка, спальник, пенка и т.д."
+            maxlength="1024"
+          />
+          <Select>
+          <TypeFieldSelect required name="fitnessLevel">
+            <option value="unset" selected style="display:none;">
+              *Уровень физической подготовки (1-10)
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+          </TypeFieldSelect>
+        </Select>
+          <FieldLabel required for="diseases">
+            Болезни и травмы
+          </FieldLabel>
+          <Textarea
+            id="diseases"
+            rows="1"
+            cols="5"
+            name="diseases"
+            maxlength="1024"
+          />
+          <FieldLabel required for="allergies">
+            Аллергии
+          </FieldLabel>
+          <Textarea
+            id="allergies"
+            rows="1"
+            cols="5"
+            name="allergies"
+            maxlength="1024"
+          />
+          <FieldLabel required for="yourTrip">
+            Твое самое дальнее путешествие
+          </FieldLabel>
+          <Textarea
+            id="yourTrip"
+            rows="1"
+            cols="5"
+            name="yourTrip"
+            maxlength="1024"
+          />
+
         </FormCardFields>
+        <Submit type="submit" name="submit">Отправить</Submit>
       </FormCardContent>
     </FormCard>
   </RootContainer>

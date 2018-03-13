@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const TypeFieldTextarea = styled.textarea`
+    margin-top: 12px;
     font-family: 'Open Sans', sans-serif;
     width: 100%;
     padding-bottom: 5px;
@@ -24,6 +25,31 @@ const TypeFieldTextarea = styled.textarea`
     @media (max-width: 1140px) {
         padding-bottom: 10px;
         font-size: 20px;
+    }
+
+    ::-webkit-input-placeholder {
+        opacity: 1;
+        color: #dcd5d5;
+    }
+    ::-ms-input-placeholder {
+        opacity: 1;
+        color: #dcd5d5;
+    }
+    :-ms-input-placeholder {
+        opacity: 1;
+        color: #dcd5d5;
+    }
+    ::-moz-placeholder {
+        opacity: 1;
+        color: #dcd5d5;
+    }
+    :-moz-placeholder {
+        opacity: 1;
+        color: #dcd5d5;
+    }
+    ::placeholder {
+        opacity: 1;
+        color: #dcd5d5;
     }
 `;
 

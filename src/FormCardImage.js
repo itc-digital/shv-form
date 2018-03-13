@@ -9,7 +9,7 @@ const FormCardImage = styled.div`
   flex-basis: 375px;
   text-align: center;
   color: #201010;
-  background: url("${process.env.PUBLIC_URL}/img/cover.jpg");
+  background: url("${process.env.PUBLIC_URL}/img/stamp_area.png");
   background-size: cover;
   background-position: center;
 

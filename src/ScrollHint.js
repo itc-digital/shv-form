@@ -19,7 +19,7 @@ const ScrollHint = styled.button`
     height: 50px;
     width: 100px;
     margin-bottom: 20px;
-    background: url("static/arrow_down.svg");
+    background: url("static/stamp_area.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
