@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const formCardImage = styled.div`
+const FormCardImage = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
@@ -9,7 +9,7 @@ const formCardImage = styled.div`
   flex-basis: 375px;
   text-align: center;
   color: #201010;
-  background: url("static/logo2.jpg");
+  background: url("${process.env.PUBLIC_URL}/img/cover.jpg");
   background-size: cover;
   background-position: center;
 
