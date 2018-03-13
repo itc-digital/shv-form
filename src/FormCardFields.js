@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const formCardFields = styled.div`
-    flex-basis: 68%;
+    flex-basis: 100%;
     max-height: 483px;
     padding-right: 20px;
     box-sizing: border-box;

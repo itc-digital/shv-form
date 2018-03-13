@@ -177,9 +177,9 @@ const App = () => (
             name="yourTrip"
             maxlength="1024"
           />
+          <Submit type="submit" name="submit">Отправить</Submit>
 
         </FormCardFields>
-        <Submit type="submit" name="submit">Отправить</Submit>
       </FormCardContent>
     </FormCard>
   </RootContainer>
