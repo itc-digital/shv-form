@@ -18,8 +18,8 @@ const App = () => (
       <FormCardContent>
         <FormCardTitle>
           <span>Регистрация</span>
-          <ItcLink>
-            <img width="20px" src="/ui/miss/static/it_fucking_c.png" />
+          <ItcLink href="https://vk.com/reu_itc" target="_blank">
+            <img width="20px" src={`${process.env.PUBLIC_URL}/img/it_fucking_c.png`} />
           </ItcLink>
         </FormCardTitle>
         <FormCardFields>
