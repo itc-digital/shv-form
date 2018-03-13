@@ -4,6 +4,7 @@ const FieldLabel = styled.label`
     display: block;
     font-size: 17.5px;
     color: #201010;
+    margin-top: 60px;
 
     @media (max-width: 1140px) {
         font-size: 20px;
