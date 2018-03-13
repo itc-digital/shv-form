@@ -7,7 +7,8 @@ import FormCardContent from './FormCardContent';
 import FormCardTitle from './FormCardTitle';
 import ItcLink from './ItcLink';
 import FormCardFields from './FormCardFields';
-import FieldLabel from './FieldLabel';
+import Label from './FieldLabel';
+import TextInput from './TextInput';
 
 const App = () => (
   <RootContainer>
@@ -19,14 +20,18 @@ const App = () => (
         <FormCardTitle>
           <span>Регистрация</span>
           <ItcLink href="https://vk.com/reu_itc" target="_blank">
-            <img width="20px" src={`${process.env.PUBLIC_URL}/img/it_fucking_c.png`} />
+            <img
+              width="20px"
+              src={`${process.env.PUBLIC_URL}/img/it_fucking_c.png`}
+            />
           </ItcLink>
         </FormCardTitle>
         <FormCardFields>
           <div>
-            <FieldLabel required for="fio">
+            <Label required for="fio">
               ФИО
-            </FieldLabel>
+            </Label>
+            <TextInput name="fio" id="fio" />
           </div>
         </FormCardFields>
       </FormCardContent>
