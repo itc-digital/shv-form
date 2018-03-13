@@ -7,8 +7,13 @@ import FormCardContent from './FormCardContent';
 import FormCardTitle from './FormCardTitle';
 import ItcLink from './ItcLink';
 import FormCardFields from './FormCardFields';
-import Label from './FieldLabel';
+import FieldLabel from './FieldLabel';
+import TypeFieldSelect from './TypeFieldSelect';
+import Select from './Select';
+import SelectFaculty from './SelectFaculty';
+import Textarea from './TypeFieldTextArea';
 import TextInput from './TextInput';
+import PhoneInput from './PhoneInput';
 
 const App = () => (
   <RootContainer>
@@ -16,7 +21,14 @@ const App = () => (
       <FormCardImage>
         <ScrollHint />
       </FormCardImage>
-      <FormCardContent>
+
+      <FormCardContent
+        id="form"
+        name="form-sign-up"
+        action="/missrea2018"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <FormCardTitle>
           <span>Регистрация</span>
           <ItcLink href="https://vk.com/reu_itc" target="_blank">
@@ -28,11 +40,67 @@ const App = () => (
         </FormCardTitle>
         <FormCardFields>
           <div>
-            <Label required for="fio">
+            <FieldLabel required for="fio">
               ФИО
-            </Label>
-            <TextInput name="fio" id="fio" />
+            </FieldLabel>
+            <TextInput id="fio" type="text" name="fio" maxlength="256" />
           </div>
+          <Select>
+            <TypeFieldSelect name="fakultet">
+              <option value="unset" selected style="display:none;">
+                *Факультет
+              </option>
+              <option value="ФФ">ФФ</option>
+              <option value="ФМЭСИ">ФМЭСИ</option>
+              <option value="ГРТСИ">ГРТСИ</option>
+              <option value="МШБиМЭ">МШБиМЭ</option>
+              <option value="Капитаны России">Капитаны России</option>
+              <option value="ФМа">ФМа</option>
+              <option value="ФМе">ФМе</option>
+              <option value="ФЭП">ФЭП</option>
+              <option value="ФЭТТ">ФЭТТ</option>
+              <option value="ИУиСЭП">ИУиСЭП</option>
+              <option value="БШМиП">БШМиП</option>
+              <option value="Integral">Integral</option>
+            </TypeFieldSelect>
+          </Select>
+          <Select>
+            <TypeFieldSelect required name="kurs">
+              <option value="unset" selected style="display:none;">
+                *Курс
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="1 магистратура">1, магистратура</option>
+              <option value="2 магистратура">2, магистратура</option>
+            </TypeFieldSelect>
+          </Select>
+          <FieldLabel required for="group">
+            Группа
+          </FieldLabel>
+          <TextInput id="group" type="text" name="group" maxlength="256" />
+          <FieldLabel required for="phone">
+            Телефон
+          </FieldLabel>
+          <PhoneInput
+            id="phone"
+            type="tel"
+            name="phone"
+          />
+          <FieldLabel required for="experience">
+            Опыт походов
+          </FieldLabel>
+          <Textarea
+            id="experience"
+            rows="1"
+            cols="5"
+            name="experience"
+            placeholder="Сколько раз, куда, условия"
+            maxlength="1024"
+          />
         </FormCardFields>
       </FormCardContent>
     </FormCard>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import MaskedInput from 'react-text-mask';
 
-const TextInputStyled = styled.input`
+const TextInputStyled = styled(MaskedInput)`
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   padding-bottom: 5px;
@@ -49,7 +50,7 @@ const TextInputStyled = styled.input`
 `;
 
 const TextInput = props => (
-  <TextInputStyled type="text" maxLength="256" {...props} />
+  <TextInputStyled type="text" mask={false} maxLength="256" {...props} />
 );
 
 export default TextInput;

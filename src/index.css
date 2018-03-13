@@ -12,3 +12,13 @@ body {
 #app {
   height: 100%;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    width: 15px;
+    height: 5px;
+    background-color: #dcd5d5;
+}

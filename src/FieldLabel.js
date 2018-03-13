@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const FieldLabel = styled.label`
   display: block;
-  margin-top: 60px;
   font-size: 17.5px;
   color: #201010;
+  margin-top: 60px;
 
   @media (max-width: 1140px) {
     font-size: 20px;
@@ -16,7 +16,7 @@ const FieldLabel = styled.label`
             content: ' *';
             color: #ff7b7b;
         }`
-      : ''} 
+      : ''};
 
   :first-child {
     margin-top: 0;
