@@ -1,4 +1,3 @@
-import { Component } from 'inferno';
 import RootContainer from './RootContainer';
 import FormCard from './FormCard';
 import FormCardImage from './FormCardImage';
@@ -6,11 +5,9 @@ import ScrollHint from './ScrollHint';
 import FormCardContent from './FormCardContent';
 import CardHeader from './CardHeader';
 import ItcLink from './ItcLink';
-import FormCardFields from './FormCardFields';
+import Fields from './Fields';
 import Label from './Label';
-import TypeFieldSelect from './TypeFieldSelect';
 import Select from './Select';
-import SelectFaculty from './SelectFaculty';
 import Textarea from './Textarea';
 import TextInput from './TextInput';
 import PhoneInput from './PhoneInput';
@@ -34,10 +31,13 @@ const App = () => (
         <CardHeader>
           <span>Регистрация</span>
           <ItcLink href="https://vk.com/reu_itc" target="_blank">
-            <img src={`${process.env.PUBLIC_URL}/img/stamps.svg`} />
+            <img
+              alt="Разработано в itc"
+              src={`${process.env.PUBLIC_URL}/img/stamps.svg`}
+            />
           </ItcLink>
         </CardHeader>
-        <FormCardFields>
+        <Fields>
           <div>
             <Label required for="fio">
               ФИО
@@ -48,13 +48,8 @@ const App = () => (
           <Label required for="fakultet">
             Факультет
           </Label>
-          <TypeFieldSelect name="fakultet">
-            <option
-              style="color: #dcd5d5;"
-              value="unset"
-              selected
-              style="display:none;"
-            >
+          <Select name="fakultet">
+            <option style="display:none;" value="unset" selected>
               Выбери...
             </option>
             <option value="ФФ">ФФ</option>
@@ -69,24 +64,22 @@ const App = () => (
             <option value="ИУиСЭП">ИУиСЭП</option>
             <option value="БШМиП">БШМиП</option>
             <option value="Integral">Integral</option>
-          </TypeFieldSelect>
+          </Select>
 
           <Label required for="kurs">
             Курс
           </Label>
-          <Select>
-            <TypeFieldSelect required name="kurs">
-              <option value="unset" selected style="display:none;">
-                Выбери...
-              </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="1 магистратура">1, магистратура</option>
-              <option value="2 магистратура">2, магистратура</option>
-            </TypeFieldSelect>
+          <Select required name="kurs">
+            <option value="unset" selected style="display:none;">
+              Выбери...
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="1 магистратура">1, магистратура</option>
+            <option value="2 магистратура">2, магистратура</option>
           </Select>
 
           <Label required for="group">
@@ -133,22 +126,21 @@ const App = () => (
           <Label required for="fitnessLevel">
             Уровень физической подготовки (1-10)
           </Label>
-          <Select>
-            <TypeFieldSelect required name="fitnessLevel">
-              <option value="unset" selected style="display:none;">
-                Выбери...
-              </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </TypeFieldSelect>
+
+          <Select required name="fitnessLevel">
+            <option value="unset" selected style="display:none;">
+              Выбери...
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
           </Select>
 
           <Label required for="diseases">
@@ -173,7 +165,7 @@ const App = () => (
             * нажимая "Отправить" ты соглашаешься на обработку персональных
             данных
           </Disclamer>
-        </FormCardFields>
+        </Fields>
       </FormCardContent>
     </FormCard>
   </RootContainer>
