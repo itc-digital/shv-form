@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Fields = styled.div`
   flex-basis: 100%;
-  max-height: 483px;
+  max-height: 400px;
   padding-right: 20px;
   box-sizing: border-box;
   overflow: auto;

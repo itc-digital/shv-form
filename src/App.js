@@ -4,7 +4,7 @@ import FormCardImage from './FormCardImage';
 import ScrollHint from './ScrollHint';
 import FormCardContent from './FormCardContent';
 import CardHeader from './CardHeader';
-import ItcLink from './ItcLink';
+import Logo from './Logo';
 import Fields from './Fields';
 import Label from './Label';
 import Select from './Select';
@@ -30,12 +30,12 @@ const App = () => (
       >
         <CardHeader>
           <span>Регистрация</span>
-          <ItcLink href="https://vk.com/reu_itc" target="_blank">
+          <Logo>
             <img
-              alt="Разработано в itc"
+              alt="Школа выживания 2018"
               src={`${process.env.PUBLIC_URL}/img/stamps.svg`}
             />
-          </ItcLink>
+          </Logo>
         </CardHeader>
         <Fields>
           <div>

@@ -11,7 +11,7 @@ const CardHeader = styled.div`
   font-weight: 400;
   color: #201010;
 
-  @media (max-width: 1140px) {
+  @media (max-width: 500px) {
     font-size: 20px;
   }
 `;
