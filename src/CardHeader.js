@@ -1,11 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const FormCardTitle = styled.div`
+const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-basis: 100%;
-  margin-bottom: 50px;
   padding-right: 15px;
   font-weight: 600;
   font-size: 35px;
@@ -16,4 +15,4 @@ const FormCardTitle = styled.div`
   }
 `;
 
-export default FormCardTitle;
+export default CardHeader;
