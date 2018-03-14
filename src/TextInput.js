@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import MaskedInput from 'react-text-mask';
 
 const TextInputStyled = styled(MaskedInput)`
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'PT Mono', serif;
   width: 100%;
   padding-bottom: 5px;
   box-sizing: border-box;
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 2px solid #d6c1c1;
+  border-bottom: 2px solid #ccc1a7;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -19,7 +19,7 @@ const TextInputStyled = styled(MaskedInput)`
   font-size: 17.5px;
 
   :focus {
-    border-bottom: 2px solid #8b9bbe;
+    border-bottom: 2px solid #cf4638;
     color: #201010;
   }
 

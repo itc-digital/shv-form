@@ -14,7 +14,7 @@ const Label = styled.label`
     props.required
       ? `::after {
             content: ' *';
-            color: #ff7b7b;
+            color: #cf4638;
         }`
       : ''};
 

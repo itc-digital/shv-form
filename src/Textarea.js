@@ -14,7 +14,7 @@ const TextareaStyled = styled.textarea`
   padding: 0;
   line-height: ${lineHeight}px;
   background: transparent;
-  border-bottom: 2px solid #d6c1c1;
+  border-bottom: 2px solid #ccc1a7;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -23,7 +23,7 @@ const TextareaStyled = styled.textarea`
   overflow: hidden;
   font-size: 17.5px;
   :focus {
-    border-bottom: 2px solid #8b9bbe;
+    border-bottom: 2px solid #cf4638;
     color: #201010;
   }
   @media (max-width: 1140px) {

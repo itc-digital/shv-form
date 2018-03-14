@@ -15,6 +15,7 @@ import Textarea from './Textarea';
 import TextInput from './TextInput';
 import PhoneInput from './PhoneInput';
 import Submit from './Submit';
+import Disclamer from './Disclamer';
 
 const App = () => (
   <RootContainer>
@@ -47,25 +48,28 @@ const App = () => (
           <Label required for="fakultet">
             Факультет
           </Label>
-          <Select>
-            <TypeFieldSelect name="fakultet">
-              <option style="color: #dcd5d5;" value="unset" selected style="display:none;">
-                Выберите факультет
-              </option>
-              <option value="ФФ">ФФ</option>
-              <option value="ФМЭСИ">ФМЭСИ</option>
-              <option value="ГРТСИ">ГРТСИ</option>
-              <option value="МШБиМЭ">МШБиМЭ</option>
-              <option value="Капитаны России">Капитаны России</option>
-              <option value="ФМа">ФМа</option>
-              <option value="ФМе">ФМе</option>
-              <option value="ФЭП">ФЭП</option>
-              <option value="ФЭТТ">ФЭТТ</option>
-              <option value="ИУиСЭП">ИУиСЭП</option>
-              <option value="БШМиП">БШМиП</option>
-              <option value="Integral">Integral</option>
-            </TypeFieldSelect>
-          </Select>
+          <TypeFieldSelect name="fakultet">
+            <option
+              style="color: #dcd5d5;"
+              value="unset"
+              selected
+              style="display:none;"
+            >
+              Выбери...
+            </option>
+            <option value="ФФ">ФФ</option>
+            <option value="ФМЭСИ">ФМЭСИ</option>
+            <option value="ГРТСИ">ГРТСИ</option>
+            <option value="МШБиМЭ">МШБиМЭ</option>
+            <option value="Капитаны России">Капитаны России</option>
+            <option value="ФМа">ФМа</option>
+            <option value="ФМе">ФМе</option>
+            <option value="ФЭП">ФЭП</option>
+            <option value="ФЭТТ">ФЭТТ</option>
+            <option value="ИУиСЭП">ИУиСЭП</option>
+            <option value="БШМиП">БШМиП</option>
+            <option value="Integral">Integral</option>
+          </TypeFieldSelect>
 
           <Label required for="kurs">
             Курс
@@ -73,7 +77,7 @@ const App = () => (
           <Select>
             <TypeFieldSelect required name="kurs">
               <option value="unset" selected style="display:none;">
-                Выберите курс
+                Выбери...
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -127,12 +131,12 @@ const App = () => (
             placeholder="Палатка, спальник, пенка и т.д."
           />
           <Label required for="fitnessLevel">
-          Уровень физической подготовки (1-10)
+            Уровень физической подготовки (1-10)
           </Label>
           <Select>
             <TypeFieldSelect required name="fitnessLevel">
               <option value="unset" selected style="display:none;">
-                Выберите уровень
+                Выбери...
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -165,6 +169,10 @@ const App = () => (
           <Submit type="submit" name="submit">
             Отправить
           </Submit>
+          <Disclamer>
+            * нажимая "Отправить" ты соглашаешься на обработку персональных
+            данных
+          </Disclamer>
         </FormCardFields>
       </FormCardContent>
     </FormCard>

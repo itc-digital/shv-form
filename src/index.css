@@ -1,12 +1,31 @@
+@font-face {
+  font-family: 'font67543412e7235e6ca0d961a4419c529d';
+  src: url('https://nomail.com.ua/files/eot/67543412e7235e6ca0d961a4419c529d.eot?#iefix')
+      format('embedded-opentype'),
+    url('https://nomail.com.ua/files/woff/67543412e7235e6ca0d961a4419c529d.woff')
+      format('woff'),
+    url('https://nomail.com.ua/files/woff2/67543412e7235e6ca0d961a4419c529d.woff2')
+      format('woff2');
+}
+
+@font-face {
+  font-family: 'TrixieCyr-Plain';
+  src: local('TrixieCyr-Plain'),
+    url('https://nomail.com.ua/files/woff/67543412e7235e6ca0d961a4419c529d.woff')
+      format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css?family=PT+Mono&subset=cyrillic');
+
 html,
 body {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    overflow-x: hidden;
+  font-family: 'PT Mono', serif;
+  overflow-x: hidden;
 }
 
 #app {
@@ -14,11 +33,11 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
-    background: transparent;
+  width: 5px;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    width: 15px;
-    height: 5px;
-    background-color: #dcd5d5;
+  width: 15px;
+  height: 5px;
+  background-color: #ccc1a7;
 }

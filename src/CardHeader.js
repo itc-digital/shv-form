@@ -6,8 +6,9 @@ const CardHeader = styled.div`
   align-items: center;
   flex-basis: 100%;
   padding-right: 15px;
-  font-weight: 600;
+  font-family: 'TrixieCyr-Plain', serif;
   font-size: 35px;
+  font-weight: 400;
   color: #201010;
 
   @media (max-width: 1140px) {

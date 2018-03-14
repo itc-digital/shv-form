@@ -10,7 +10,8 @@ const FormCardImage = styled.div`
   text-align: center;
   color: #201010;
   background: url("${process.env.PUBLIC_URL}/img/stamp_area.png");
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
   background-position: center;
 
   @media (max-width: 1140px) {
