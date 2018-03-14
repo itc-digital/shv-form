@@ -49,8 +49,8 @@ const App = () => (
           </Label>
           <Select>
             <TypeFieldSelect name="fakultet">
-              <option value="unset" selected style="display:none;">
-                Выбери...
+              <option style="color: #dcd5d5;" value="unset" selected style="display:none;">
+                Выберите факультет
               </option>
               <option value="ФФ">ФФ</option>
               <option value="ФМЭСИ">ФМЭСИ</option>
@@ -66,10 +66,14 @@ const App = () => (
               <option value="Integral">Integral</option>
             </TypeFieldSelect>
           </Select>
+
+          <Label required for="kurs">
+            Курс
+          </Label>
           <Select>
             <TypeFieldSelect required name="kurs">
               <option value="unset" selected style="display:none;">
-                *Курс
+                Выберите курс
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -122,11 +126,13 @@ const App = () => (
             name="inventoryAvailiable"
             placeholder="Палатка, спальник, пенка и т.д."
           />
-
+          <Label required for="fitnessLevel">
+          Уровень физической подготовки (1-10)
+          </Label>
           <Select>
             <TypeFieldSelect required name="fitnessLevel">
               <option value="unset" selected style="display:none;">
-                *Уровень физической подготовки (1-10)
+                Выберите уровень
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
