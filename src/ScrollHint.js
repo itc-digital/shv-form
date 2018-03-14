@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import arrowDown from './img/arrow_down.svg';
 
 const ScrollHint = styled.button`
   display: none;
@@ -19,7 +20,7 @@ const ScrollHint = styled.button`
     height: 50px;
     width: 100px;
     margin-bottom: 20px;
-    background: url("static/stamp_area.png");
+    background: url("${arrowDown}");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
