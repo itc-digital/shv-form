@@ -43,10 +43,14 @@ const App = () => (
             </Label>
             <TextInput id="fio" type="text" name="fio" />
           </div>
+
+          <Label required for="fakultet">
+            Факультет
+          </Label>
           <Select>
             <TypeFieldSelect name="fakultet">
               <option value="unset" selected style="display:none;">
-                *Факультет
+                Выбери...
               </option>
               <option value="ФФ">ФФ</option>
               <option value="ФМЭСИ">ФМЭСИ</option>
