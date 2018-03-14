@@ -85,9 +85,10 @@ class Textarea extends Component {
     return (
       <TextareaStyled
         value={value}
+        onChange={this.handleChange}
         rows={rows}
         cols="5"
-        onChange={this.handleChange}
+        maxLength="1024"
         {...props}
       />
     );

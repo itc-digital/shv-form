@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const FieldLabel = styled.label`
+const Label = styled.label`
   display: block;
   font-size: 17.5px;
   color: #201010;
@@ -23,4 +23,4 @@ const FieldLabel = styled.label`
   }
 `;
 
-export default FieldLabel;
+export default Label;

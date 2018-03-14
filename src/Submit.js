@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Submit = styled.button`
   display: block;
   width: 100%;
-  margin: 10px 20px 10px 10px;
+  margin: 30px 20px 10px 10px;
   padding: 15px;
   box-sizing: border-box;
   text-transform: uppercase;

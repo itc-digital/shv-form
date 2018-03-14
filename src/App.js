@@ -7,7 +7,7 @@ import FormCardContent from './FormCardContent';
 import CardHeader from './CardHeader';
 import ItcLink from './ItcLink';
 import FormCardFields from './FormCardFields';
-import FieldLabel from './FieldLabel';
+import Label from './Label';
 import TypeFieldSelect from './TypeFieldSelect';
 import Select from './Select';
 import SelectFaculty from './SelectFaculty';
@@ -38,9 +38,9 @@ const App = () => (
         </CardHeader>
         <FormCardFields>
           <div>
-            <FieldLabel required for="fio">
+            <Label required for="fio">
               ФИО
-            </FieldLabel>
+            </Label>
             <TextInput id="fio" type="text" name="fio" />
           </div>
           <Select>
@@ -77,49 +77,46 @@ const App = () => (
             </TypeFieldSelect>
           </Select>
 
-          <FieldLabel required for="group">
+          <Label required for="group">
             Группа
-          </FieldLabel>
+          </Label>
           <TextInput id="group" type="text" name="group" />
 
-          <FieldLabel required for="phone">
+          <Label required for="phone">
             Телефон
-          </FieldLabel>
+          </Label>
           <PhoneInput id="phone" type="tel" name="phone" />
 
-          <FieldLabel required for="vkLink">
+          <Label required for="vkLink">
             Страница ВКонтакте
-          </FieldLabel>
+          </Label>
           <TextInput id="vkLink" type="url" name="vkLink" />
 
-          <FieldLabel required for="experience">
+          <Label required for="experience">
             Опыт походов
-          </FieldLabel>
+          </Label>
           <Textarea
             id="experience"
             name="experience"
             placeholder="Сколько раз, куда, условия"
-            maxlength="1024"
           />
 
-          <FieldLabel required for="otherExperience">
+          <Label required for="otherExperience">
             Другой полезный опыт
-          </FieldLabel>
+          </Label>
           <Textarea
             id="otherExperience"
             name="otherExperience"
             placeholder="Страйкбол, спортивное ориентирование и т.д."
-            maxlength="1024"
           />
 
-          <FieldLabel required for="inventoryAvailiable">
+          <Label required for="inventoryAvailiable">
             Имеющийся инвентарь
-          </FieldLabel>
+          </Label>
           <Textarea
             id="inventoryAvailiable"
             name="inventoryAvailiable"
             placeholder="Палатка, спальник, пенка и т.д."
-            maxlength="1024"
           />
 
           <Select>
@@ -140,38 +137,20 @@ const App = () => (
             </TypeFieldSelect>
           </Select>
 
-          <FieldLabel required for="diseases">
+          <Label required for="diseases">
             Болезни и травмы
-          </FieldLabel>
-          <Textarea
-            id="diseases"
-            rows="1"
-            cols="5"
-            name="diseases"
-            maxlength="1024"
-          />
+          </Label>
+          <Textarea id="diseases" name="diseases" />
 
-          <FieldLabel required for="allergies">
+          <Label required for="allergies">
             Аллергии
-          </FieldLabel>
-          <Textarea
-            id="allergies"
-            rows="1"
-            cols="5"
-            name="allergies"
-            maxlength="1024"
-          />
+          </Label>
+          <Textarea id="allergies" name="allergies" />
 
-          <FieldLabel required for="yourTrip">
+          <Label required for="yourTrip">
             Твое самое дальнее путешествие
-          </FieldLabel>
-          <Textarea
-            id="yourTrip"
-            rows="1"
-            cols="5"
-            name="yourTrip"
-            maxlength="1024"
-          />
+          </Label>
+          <Textarea id="yourTrip" name="yourTrip" />
 
           <Submit type="submit" name="submit">
             Отправить
