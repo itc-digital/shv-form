@@ -4,6 +4,7 @@ const Submit = styled.button`
     display: block;
     width: 100%;
     margin: 0 auto;
+    margin-top: 12px;
     padding: 15px;
     box-sizing: border-box;
     text-transform: uppercase;

@@ -6,7 +6,7 @@ const RootContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
-
+  background: url("${process.env.PUBLIC_URL}/img/background-2x.png") center;
   @media (max-width: 1140px) {
     align-items: unset;
   }
