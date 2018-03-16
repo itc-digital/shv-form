@@ -22,6 +22,7 @@ class App extends Component {
     render() {
         const {
             values,
+            touched,
             errors,
             handleBlur,
             handleChange,
@@ -66,7 +67,7 @@ class App extends Component {
                                     type="text"
                                     name="fio"
                                 />
-                                <Error>{errors.fio}</Error>
+                                <Error>{touched.fio && errors.fio}</Error>
                             </div>
 
                             <Label required for="fakultet">
@@ -131,7 +132,7 @@ class App extends Component {
                                 onBlur={handleBlur}
                                 value={values.group}
                             />
-                            <Error>{errors.group}</Error>
+                            <Error>{touched.group && errors.group}</Error>
 
                             <Label required for="phone">
                                 Телефон
@@ -145,7 +146,7 @@ class App extends Component {
                                 value={values.phone}
                             />
 
-                            <Error>{errors.phone}</Error>
+                            <Error>{touched.phone && errors.phone}</Error>
                             <Label required for="vkLink">
                                 Страница ВКонтакте
                             </Label>
@@ -158,7 +159,7 @@ class App extends Component {
                                 value={values.vkLink}
                             />
 
-                            <Error>{errors.vkLink}</Error>
+                            <Error>{touched.vkLink && errors.vkLink}</Error>
 
                             <Label required for="experience">
                                 Опыт походов
@@ -172,7 +173,7 @@ class App extends Component {
                                 value={values.experience}
                             />
 
-                            <Error>{errors.experience}</Error>
+                            <Error>{touched.experience && errors.experience}</Error>
 
                             <Label required for="otherExperience">
                                 Другой полезный опыт
@@ -186,7 +187,7 @@ class App extends Component {
                                 value={values.otherExperience}
                             />
 
-                            <Error>{errors.otherExperience}</Error>
+                            <Error>{touched.otherExperience && errors.otherExperience}</Error>
 
                             <Label required for="inventoryAvailiable">
                                 Имеющийся инвентарь
@@ -200,7 +201,7 @@ class App extends Component {
                                 value={values.inventoryAvailiable}
                             />
 
-                            <Error>{errors.inventoryAvailiable}</Error>
+                            <Error>{touched.inventoryAvailiable && errors.inventoryAvailiable}</Error>
                             <Label required for="fitnessLevel">
                                 Уровень физической подготовки (1-10)
                             </Label>
@@ -236,7 +237,7 @@ class App extends Component {
                                 value={values.diseases}
                             />
 
-                            <Error>{errors.diseases}</Error>
+                            <Error>{touched.diseases && errors.diseases}</Error>
 
                             <Label required for="allergies">
                                 Аллергии
@@ -249,7 +250,7 @@ class App extends Component {
                                 value={values.allergies}
                             />
 
-                            <Error>{errors.allergies}</Error>
+                            <Error>{touched.allergies && errors.allergies}</Error>
 
                             <Label required for="yourTrip">
                                 Твое самое дальнее путешествие
@@ -262,7 +263,7 @@ class App extends Component {
                                 value={values.yourTrip}
                             />
 
-                            <Error>{errors.yourTrip}</Error>
+                            <Error>{touched.yourTrip && errors.yourTrip}</Error>
 
                             <Submit type="submit">Отправить</Submit>
                             <Disclamer>
@@ -290,7 +291,6 @@ export default withFormik({
         allergies: '',
         yourTrip: ''
     }),
-    validateOnBlur: true,
     validate: (values, props) => {
         const errors = {};
         Object.entries(values).forEach(([field, value]) => {
