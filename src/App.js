@@ -19,6 +19,12 @@ import Disclamer from './Disclamer';
 import { Component } from 'inferno';
 
 class App extends Component {
+    handleSelect = e => {
+        const { setFieldValue } = this.props;
+
+        setFieldValue(e.target.name, e.target.value);
+    };
+
     render() {
         const {
             values,
@@ -73,7 +79,12 @@ class App extends Component {
                             <Label required for="fakultet">
                                 Факультет
                             </Label>
-                            <Select name="fakultet">
+                            <Select
+                                onChange={this.handleSelect}
+                                onBlur={handleBlur}
+                                value={values.fakultet}
+                                name="fakultet"
+                            >
                                 <option
                                     style="display:none;"
                                     value="unset"
@@ -96,11 +107,18 @@ class App extends Component {
                                 <option value="БШМиП">БШМиП</option>
                                 <option value="Integral">Integral</option>
                             </Select>
+                            <Error>{touched.fakultet && errors.fakultet}</Error>
 
                             <Label required for="kurs">
                                 Курс
                             </Label>
-                            <Select required name="kurs">
+                            <Select
+                                onChange={this.handleSelect}
+                                onBlur={handleBlur}
+                                value={values.kurs}
+                                required
+                                name="kurs"
+                            >
                                 <option
                                     value="unset"
                                     selected
@@ -120,6 +138,7 @@ class App extends Component {
                                     2, магистратура
                                 </option>
                             </Select>
+                            <Error>{touched.kurs && errors.kurs}</Error>
 
                             <Label required for="group">
                                 Группа
@@ -173,7 +192,9 @@ class App extends Component {
                                 value={values.experience}
                             />
 
-                            <Error>{touched.experience && errors.experience}</Error>
+                            <Error>
+                                {touched.experience && errors.experience}
+                            </Error>
 
                             <Label required for="otherExperience">
                                 Другой полезный опыт
@@ -187,7 +208,10 @@ class App extends Component {
                                 value={values.otherExperience}
                             />
 
-                            <Error>{touched.otherExperience && errors.otherExperience}</Error>
+                            <Error>
+                                {touched.otherExperience &&
+                                    errors.otherExperience}
+                            </Error>
 
                             <Label required for="inventoryAvailiable">
                                 Имеющийся инвентарь
@@ -200,13 +224,22 @@ class App extends Component {
                                 onBlur={handleBlur}
                                 value={values.inventoryAvailiable}
                             />
+                            <Error>
+                                {touched.inventoryAvailiable &&
+                                    errors.inventoryAvailiable}
+                            </Error>
 
-                            <Error>{touched.inventoryAvailiable && errors.inventoryAvailiable}</Error>
                             <Label required for="fitnessLevel">
                                 Уровень физической подготовки (1-10)
                             </Label>
-
-                            <Select required name="fitnessLevel">
+                            <Select
+                                onChange={this.handleSelect}
+                                onBlur={handleBlur}
+                                value={values.fitnessLevel}
+                                required
+                                id="fitnessLevel"
+                                name="fitnessLevel"
+                            >
                                 <option
                                     value="unset"
                                     selected
@@ -225,6 +258,9 @@ class App extends Component {
                                 <option value="9">9</option>
                                 <option value="10">10</option>
                             </Select>
+                            <Error>
+                                {touched.fitnessLevel && errors.fitnessLevel}
+                            </Error>
 
                             <Label required for="diseases">
                                 Болезни и травмы
@@ -250,7 +286,9 @@ class App extends Component {
                                 value={values.allergies}
                             />
 
-                            <Error>{touched.allergies && errors.allergies}</Error>
+                            <Error>
+                                {touched.allergies && errors.allergies}
+                            </Error>
 
                             <Label required for="yourTrip">
                                 Твое самое дальнее путешествие
@@ -281,12 +319,15 @@ class App extends Component {
 export default withFormik({
     mapPropsToValues: () => ({
         fio: '',
+        fakultet: '',
+        kurs: '',
         group: '',
         phone: '',
         vkLink: '',
         experience: '',
         otherExperience: '',
         inventoryAvailiable: '',
+        fitnessLevel: '',
         diseases: '',
         allergies: '',
         yourTrip: ''
@@ -294,7 +335,7 @@ export default withFormik({
     validate: (values, props) => {
         const errors = {};
         Object.entries(values).forEach(([field, value]) => {
-            if (!value) {
+            if (!value || value === 'unset') {
                 errors[field] = 'Это поле обязательно для заполнения';
             }
         });
