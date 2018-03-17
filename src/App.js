@@ -1,3 +1,4 @@
+import { Component } from 'inferno';
 import { withFormik } from 'formik';
 
 import RootContainer from './RootContainer';
@@ -16,7 +17,7 @@ import PhoneInput from './PhoneInput';
 import Error from './Error';
 import Submit from './Submit';
 import Disclamer from './Disclamer';
-import { Component } from 'inferno';
+import Popup from './Popup';
 
 class App extends Component {
     handleSelect = e => {
@@ -30,6 +31,7 @@ class App extends Component {
             values,
             touched,
             errors,
+            status,
             handleBlur,
             handleChange,
             handleSubmit
@@ -37,6 +39,11 @@ class App extends Component {
 
         return (
             <RootContainer>
+                {status === 'success' && (
+                    <Popup>
+                        <h1>Тест</h1>
+                    </Popup>
+                )}
                 <FormCard>
                     <FormCardImage>
                         <ScrollHint />
@@ -343,8 +350,7 @@ export default withFormik({
 
         return errors;
     },
-
-    handleSubmit: (values, { setSubmitting }) => {
+    handleSubmit: (values, { setSubmitting, setStatus }) => {
         const body = new FormData();
         Object.entries(values).forEach(([field, value]) => {
             body.append(field, value);
@@ -359,6 +365,7 @@ export default withFormik({
         }).then(response => {
             console.log(response.status);
             setSubmitting(false);
+            setStatus('success');
         });
     }
 })(App);
