@@ -285,7 +285,6 @@ class App extends Component {
                                 onBlur={handleBlur}
                                 value={values.allergies}
                             />
-
                             <Error>
                                 {touched.allergies && errors.allergies}
                             </Error>
@@ -345,7 +344,21 @@ export default withFormik({
         return errors;
     },
 
-    handleSubmit: values => {
-        console.log('Значения', values);
+    handleSubmit: (values, { setSubmitting }) => {
+        const body = new FormData();
+        Object.entries(values).forEach(([field, value]) => {
+            body.append(field, value);
+        });
+
+        fetch('https://form-post-jvxdvsiaze.now.sh/', {
+            method: 'POST',
+            body,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(response => {
+            console.log(response.status);
+            setSubmitting(false);
+        });
     }
 })(App);
