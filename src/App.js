@@ -18,6 +18,9 @@ import Error from './Error';
 import Submit from './Submit';
 import Disclamer from './Disclamer';
 import Popup from './Popup';
+import Stamp from './Stamp';
+import LinkButton from './LinkButton';
+import { H1, H2 } from './Typography';
 
 class App extends Component {
     handleSelect = e => {
@@ -26,12 +29,15 @@ class App extends Component {
         setFieldValue(e.target.name, e.target.value);
     };
 
+    resetStatus = () => this.props.setStatus({});
+
     render() {
         const {
             values,
             touched,
             errors,
             status,
+            setStatus,
             handleBlur,
             handleChange,
             handleSubmit
@@ -39,11 +45,20 @@ class App extends Component {
 
         return (
             <RootContainer>
-                {status === 'success' && (
+                {status && status.success && (
                     <Popup>
-                        <h1>Тест</h1>
+                        <Stamp rotation="-10deg">Заявка отправлена</Stamp>
                     </Popup>
                 )}
+
+                {status && status.error && (
+                    <Popup>
+                        <Stamp rotation="-10deg">Ошибка</Stamp>
+                        <H2>{status.error}</H2>
+                        <LinkButton onClick={this.resetStatus}>ОК</LinkButton>
+                    </Popup>
+                )}
+
                 <FormCard>
                     <FormCardImage>
                         <ScrollHint />
@@ -57,7 +72,7 @@ class App extends Component {
                         enctype="multipart/form-data"
                     >
                         <CardHeader>
-                            <span>Регистрация</span>
+                            <H1>Регистрация</H1>
                             <Logo>
                                 <img
                                     alt="Школа выживания 2018"
@@ -309,7 +324,9 @@ class App extends Component {
 
                             <Error>{touched.yourTrip && errors.yourTrip}</Error>
 
-                            <Submit type="submit">Отправить</Submit>
+                            <Submit type="submit">
+                                <Stamp>Отправить</Stamp>
+                            </Submit>
                             <Disclamer>
                                 * нажимая "Отправить" ты соглашаешься на
                                 обработку персональных данных
@@ -346,8 +363,6 @@ export default withFormik({
             }
         });
 
-        console.log(values, errors);
-
         return errors;
     },
     handleSubmit: (values, { setSubmitting, setStatus }) => {
@@ -356,16 +371,23 @@ export default withFormik({
             body.append(field, value);
         });
 
-        fetch('https://form-post-jvxdvsiaze.now.sh/', {
+        fetch('.', {
             method: 'POST',
             body,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then(response => {
-            console.log(response.status);
             setSubmitting(false);
-            setStatus('success');
+
+            if (response.status === 200) {
+                setStatus({ success: true });
+            } else {
+                response.text().then(text => {
+                    setStatus({ error: text });
+                    console.log(text);
+                });
+            }
         });
     }
 })(App);
