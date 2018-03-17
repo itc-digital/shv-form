@@ -1,14 +1,9 @@
 import styled from 'styled-components';
 
 const Disclamer = styled.p`
-    font-family: 'PT Mono', mono;
-    font-size: 17.5px;
-    color #614A40;
-    text-align: center;
-
-    @media (max-width: 1140px) {
-        font-size: 20px;
-    }
+    font-size: 12px;
+    color #555;
+    padding: 0 20px;
 `;
 
 export default Disclamer;
