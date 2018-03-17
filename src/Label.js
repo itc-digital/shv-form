@@ -5,6 +5,7 @@ const Label = styled.label`
   font-size: 17.5px;
   color: #201010;
   margin-top: 60px;
+  font-family: 'PT Mono', mono;
 
   @media (max-width: 1140px) {
     font-size: 20px;
