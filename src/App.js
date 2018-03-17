@@ -1,5 +1,6 @@
 import { Component } from 'inferno';
 import { withFormik } from 'formik';
+import scroll from 'react-scroll-to-component';
 
 import RootContainer from './RootContainer';
 import FormCard from './FormCard';
@@ -28,7 +29,9 @@ class App extends Component {
 
         setFieldValue(e.target.name, e.target.value);
     };
-
+    componentDidMount() {
+        scroll(this.group);
+      } 
     resetStatus = () => this.props.setStatus({});
 
     render() {
@@ -61,7 +64,7 @@ class App extends Component {
 
                 <FormCard>
                     <FormCardImage>
-                        <ScrollHint />
+                        <ScrollHint onclick={()=>scroll(this.group)}/>
                     </FormCardImage>
 
                     <FormCardContent
@@ -166,9 +169,11 @@ class App extends Component {
                                 Группа
                             </Label>
                             <TextInput
+                                className="group"
                                 id="group"
                                 type="text"
                                 name="group"
+                                ref={(section) =>{this.group = section}}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.group}
