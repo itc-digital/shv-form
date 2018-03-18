@@ -25,6 +25,7 @@ const ScrollHint = styled.button`
     background-position: center;
     background-size: cover;
     border: none;
+    outline: none;
     animation: scroll-hint-animation 2s infinite;
   }
 `;

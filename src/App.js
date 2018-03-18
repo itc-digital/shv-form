@@ -69,10 +69,6 @@ class App extends Component {
 
                     <FormCardContent
                         onSubmit={handleSubmit}
-                        name="form-sign-up"
-                        action="./"
-                        method="post"
-                        enctype="multipart/form-data"
                     >
                         <CardHeader>
                             <H1>Регистрация</H1>
@@ -376,7 +372,7 @@ export default withFormik({
             body.append(field, value);
         });
 
-        fetch('.', {
+        fetch('', {
             method: 'POST',
             body,
             headers: {

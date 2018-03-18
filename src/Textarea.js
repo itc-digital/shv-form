@@ -59,7 +59,6 @@ const TextareaStyled = styled.textarea`
 
 class Textarea extends Component {
     state = {
-        value: '',
         rows: 1
     };
 
@@ -73,9 +72,11 @@ class Textarea extends Component {
         }
 
         this.setState({
+            rows: newRows,
             value: e.target.value,
-            rows: newRows
         });
+
+        this.props.onChange(e);
     };
 
     render() {
