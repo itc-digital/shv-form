@@ -70,7 +70,7 @@ class App extends Component {
                     <FormCardContent
                         onSubmit={handleSubmit}
                         name="form-sign-up"
-                        action="/missrea2018"
+                        action="./"
                         method="post"
                         enctype="multipart/form-data"
                     >
@@ -173,7 +173,7 @@ class App extends Component {
                                 id="group"
                                 type="text"
                                 name="group"
-                                ref={(section) =>{this.group = section}}
+                                ref={(TextInput) =>{this.group = TextInput}}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.group}
