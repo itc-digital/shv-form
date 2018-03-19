@@ -6,15 +6,16 @@ const Submit = styled.button`
     outline: none;
     border: none;
     cursor: pointer;
-    transition: all 100ms ease-in-out;
+    transition: all 50ms ease-in;
     background: transparent;
+    ${({ disabled }) => disabled && 'transform: rotate(-10deg) scale(0.98)'};
 
     :hover {
-        transform: scale(1.02);
+        transform: scale(1.05);
     }
 
     :active {
-        transform: scale(0.98);
+        transform: rotate(-10deg) scale(0.98);
     }
 `;
 

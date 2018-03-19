@@ -5,7 +5,7 @@ const lineHeight = 20;
 
 const TextareaStyled = styled.textarea`
     margin-top: 12px;
-    font-family: 'PT Mono', sans-serif;
+    font-family: ${({ theme }) => theme.text.font.family};
     width: 100%;
     padding-bottom: 5px;
     box-sizing: border-box;
@@ -73,7 +73,7 @@ class Textarea extends Component {
 
         this.setState({
             rows: newRows,
-            value: e.target.value,
+            value: e.target.value
         });
 
         this.props.onChange(e);

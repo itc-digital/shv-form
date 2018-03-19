@@ -9,7 +9,7 @@ const Stamp = styled.div`
   text-transform: uppercase;
   text-align: center;
   border-radius: 3px;
-  font-family: 'TrixieCyr-Plain', sans-serif;
+    font-family: ${({ theme }) => theme.header.font.family};
   font-size: 32px;
   font-weight: 400;
   background: url('${stampBorder}');

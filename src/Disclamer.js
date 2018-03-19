@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Disclamer = styled.p`   
-    font-family: 'PT Mono', mono;
+    font-family: ${({ theme }) => theme.text.font.family};
     font-size: 17.5px;	
     color #614A40;		
     text-align: center;		

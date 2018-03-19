@@ -11,7 +11,7 @@ const TypeFieldSelect = styled.select`
     outline: none;
     resize: none;
     overflow: hidden;
-    font-family: 'PT Mono', mono;
+    font-family: ${({ theme }) => theme.text.font.family};
     font-size: 17.5px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -20,7 +20,7 @@ const TypeFieldSelect = styled.select`
     background: transparent;
 
     option {
-        font-family: 'PT Mono', mono;
+        font-family: ${({ theme }) => theme.text.font.family};
     }
 `;
 
