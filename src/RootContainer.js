@@ -8,6 +8,7 @@ const RootContainer = styled.div`
   overflow-x: hidden;
   background: url("${process.env.PUBLIC_URL}/img/background-2x.png") center;
   @media (max-width: 1140px) {
+    display: block;
     align-items: unset;
   }
 `;

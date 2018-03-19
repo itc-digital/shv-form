@@ -13,12 +13,21 @@ body {
   height: 100%;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  background: transparent;
+@media (max-width: 1140px) {
+  #app {
+    height: unset;
+    min-height: 100%;
+  }
 }
-::-webkit-scrollbar-thumb {
-  width: 15px;
-  height: 5px;
-  background-color: #ccc1a7;
+
+@media (min-width: 1141px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 15px;
+    height: 5px;
+    background-color: #ccc1a7;
+  }
 }
