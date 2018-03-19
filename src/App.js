@@ -1,5 +1,6 @@
 import { Component } from 'inferno';
 import { withFormik } from 'formik';
+import { ThemeProvider } from 'styled-components';
 
 import RootContainer from './RootContainer';
 import FormCard from './FormCard';
@@ -37,7 +38,6 @@ class App extends Component {
             touched,
             errors,
             status,
-            setStatus,
             handleBlur,
             handleChange,
             handleSubmit
@@ -48,14 +48,14 @@ class App extends Component {
                 {status &&
                     status.success && (
                         <Popup>
-                            <Stamp rotation="-10deg">Заявка отправлена</Stamp>
+                            <Stamp rotation="-8deg">Заявка отправлена</Stamp>
                         </Popup>
                     )}
 
                 {status &&
                     status.error && (
                         <Popup>
-                            <Stamp rotation="-10deg">Ошибка</Stamp>
+                            <Stamp rotation="-8deg">Ошибка</Stamp>
                             <H2>{status.error}</H2>
                             <LinkButton onClick={this.resetStatus}>
                                 ОК

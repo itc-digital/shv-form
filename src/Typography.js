@@ -8,6 +8,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
+    margin-top: 20px;
     font-family: 'TrixieCyr-Plain', serif;
     font-size: 20px;
     font-weight: 400;
