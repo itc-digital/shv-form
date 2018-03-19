@@ -31,7 +31,7 @@ class App extends Component {
     };
     componentDidMount() {
         scroll(this.group);
-      } 
+    }
     resetStatus = () => this.props.setStatus({});
 
     render() {
@@ -48,28 +48,30 @@ class App extends Component {
 
         return (
             <RootContainer>
-                {status && status.success && (
-                    <Popup>
-                        <Stamp rotation="-10deg">Заявка отправлена</Stamp>
-                    </Popup>
-                )}
+                {status &&
+                    status.success && (
+                        <Popup>
+                            <Stamp rotation="-10deg">Заявка отправлена</Stamp>
+                        </Popup>
+                    )}
 
-                {status && status.error && (
-                    <Popup>
-                        <Stamp rotation="-10deg">Ошибка</Stamp>
-                        <H2>{status.error}</H2>
-                        <LinkButton onClick={this.resetStatus}>ОК</LinkButton>
-                    </Popup>
-                )}
+                {status &&
+                    status.error && (
+                        <Popup>
+                            <Stamp rotation="-10deg">Ошибка</Stamp>
+                            <H2>{status.error}</H2>
+                            <LinkButton onClick={this.resetStatus}>
+                                ОК
+                            </LinkButton>
+                        </Popup>
+                    )}
 
                 <FormCard>
                     <FormCardImage>
-                        <ScrollHint onclick={()=>scroll(this.group)}/>
+                        <ScrollHint onclick={() => scroll(this.group)} />
                     </FormCardImage>
 
-                    <FormCardContent
-                        onSubmit={handleSubmit}
-                    >
+                    <FormCardContent onSubmit={handleSubmit}>
                         <CardHeader>
                             <H1>Регистрация</H1>
                             <Logo>
@@ -169,7 +171,9 @@ class App extends Component {
                                 id="group"
                                 type="text"
                                 name="group"
-                                ref={(TextInput) =>{this.group = TextInput}}
+                                ref={TextInput => {
+                                    this.group = TextInput;
+                                }}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.group}
@@ -367,17 +371,19 @@ export default withFormik({
         return errors;
     },
     handleSubmit: (values, { setSubmitting, setStatus }) => {
-        const body = new FormData();
+        const body = new URLSearchParams();
+
         Object.entries(values).forEach(([field, value]) => {
-            body.append(field, value);
+            body.set(field, value);
         });
 
         fetch('', {
             method: 'POST',
-            body,
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
+                'Content-Type':
+                    'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body
         }).then(response => {
             setSubmitting(false);
 
