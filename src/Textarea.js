@@ -5,7 +5,7 @@ const lineHeight = 20;
 
 const TextareaStyled = styled.textarea`
     margin-top: 12px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'PT Mono', sans-serif;
     width: 100%;
     padding-bottom: 5px;
     box-sizing: border-box;
