@@ -9,13 +9,13 @@ const Stamp = styled.div`
   text-transform: uppercase;
   text-align: center;
   border-radius: 3px;
-    font-family: ${({ theme }) => theme.header.font.family};
+  font-family: ${({ theme }) => theme.header.font.family};
   font-size: 32px;
   font-weight: 400;
   background: url('${stampBorder}');
   background-position: center;
   background-size: cover;
-  transform: rotateZ(${props => (props.rotation ? props.rotation : '0deg')});
+  transform: rotateZ(${({ rotation }) => (rotation ? rotation : '0deg')});
   color: #cf4638;
 `;
 

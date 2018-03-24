@@ -13,7 +13,7 @@ const TextInputStyled = styled(MaskedInput)`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    color: #201010;
+    font-family: ${({ theme }) => theme.text.color};
     resize: none;
     overflow: hidden;
     font-size: 17.5px;
@@ -25,27 +25,27 @@ const TextInputStyled = styled(MaskedInput)`
 
     ::-webkit-input-placeholder {
         opacity: 1;
-        color: #dcd5d5;
+        font-family: ${({ theme }) => theme.input.placeholderColor};
     }
     ::-ms-input-placeholder {
         opacity: 1;
-        color: #dcd5d5;
+        font-family: ${({ theme }) => theme.input.placeholderColor};
     }
     :-ms-input-placeholder {
         opacity: 1;
-        color: #dcd5d5;
+        font-family: ${({ theme }) => theme.input.placeholderColor};
     }
     ::-moz-placeholder {
         opacity: 1;
-        color: #dcd5d5;
+        font-family: ${({ theme }) => theme.input.placeholderColor};
     }
     :-moz-placeholder {
         opacity: 1;
-        color: #dcd5d5;
+        font-family: ${({ theme }) => theme.input.placeholderColor};
     }
     ::placeholder {
         opacity: 1;
-        color: #dcd5d5;
+        font-family: ${({ theme }) => theme.input.placeholderColor};
     }
 `;
 

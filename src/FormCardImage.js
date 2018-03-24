@@ -8,7 +8,6 @@ const FormCardImage = styled.div`
   height: 100%;
   flex-basis: 375px;
   text-align: center;
-  color: #201010;
   background: url("${process.env.PUBLIC_URL}/img/stamp_area.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -18,4 +17,5 @@ const FormCardImage = styled.div`
     height: 100vh;
   }
 `;
+
 export default FormCardImage;
