@@ -155,16 +155,7 @@ class App extends Component {
                                         Выбери...
                                     </option>
                                     <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="1 магистратура">
-                                        1, магистратура
-                                    </option>
-                                    <option value="2 магистратура">
-                                        2, магистратура
-                                    </option>
+                                    <option value="Другой">Другой</option>
                                 </Select>
                                 <Error>{touched.kurs && errors.kurs}</Error>
 
@@ -368,6 +359,8 @@ export default withFormik({
         Object.entries(values).forEach(([field, value]) => {
             if (!value || value === 'unset') {
                 errors[field] = 'Это поле обязательно для заполнения';
+            } else if (field === 'kurs' && value === 'Другой') {
+                errors[field] = 'Проект проводится только для первокурсников.';
             }
         });
 
