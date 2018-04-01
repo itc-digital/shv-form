@@ -68,6 +68,12 @@ class App extends Component {
                                 </LinkButton>
                             </Popup>
                         )}
+                        <Popup>
+                                <Stamp rotation="-8deg">
+                                    Регистрация завершена
+                                </Stamp>
+
+                        </Popup>
 
                     <FormCard>
                         <FormCardImage>
