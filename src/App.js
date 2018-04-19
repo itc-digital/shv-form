@@ -132,7 +132,7 @@ class App extends Component {
                                         </Label><FuzzySearch
   list={this.list}
   onChange={this.smthChange}
-  value={this.state.valueOfFIO}
+  //value={this.state.valueOfFIO}
   width="100%"
   placeholder=""
   ClassName="myInput"
@@ -142,7 +142,7 @@ class App extends Component {
       return (
         <div
           key={i}
-          onClick={()=>{this.setState({valueOfFIO:this.list[i]});console.log(this.state.valueOfFIO)}}
+          onClick={()=>clickHandler(i)}
         >
           {this.list[i]}
         </div>
