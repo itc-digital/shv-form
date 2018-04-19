@@ -26,28 +26,41 @@ import LinkButton from './LinkButton';
 import { H1, H2 } from './Typography';
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {success: false, result: false, valueOfFIO: '', error: false};
+        this.state = {
+            success: false,
+            result: false,
+            valueOfFIO: '',
+            error: false,
+            participants: ['Лекомцев Дмитрий Константинович']
+        };
+        //fetch(`${process.env.PUBLIC_URL}/api`).then(response =>{
+        //    console.log(response);
+        //    return response.json()
+        //}).then(data =>{
+        //    this.setState({participants:data})
+        //    console.log(this.state.participants);
+        //})
         this.handleSubmit = this.handleSubmit.bind(this);
         this.smthChange = this.smthChange.bind(this);
     }
-    smthChange = e =>{
-        if(this.state.success!=true){
-            this.setState({valueOfFIO: e.target.value})
+    smthChange = e => {
+        if (this.state.success != true) {
+            this.setState({ valueOfFIO: e.target.value });
         }
-    }
-    handleSubmit = e =>{
-        if (this.state.valueOfFIO.replace(/\s+/g, '') === ''){
-            this.setState({error:true})
+    };
+    handleSubmit = e => {
+        if (this.state.valueOfFIO.replace(/\s+/g, '') === '') {
+            this.setState({ error: true });
+        } else if (
+            this.state.participants.indexOf(this.state.valueOfFIO) != -1
+        ) {
+            this.setState({ success: true, result: true, error: false });
+        } else {
+            this.setState({ success: true, result: false, error: false });
         }
-
-        else if(this.state.valueOfFIO == "Лекомцев Дмитрий Константинович"){
-            this.setState({success: true, result: true, error: false});
-        }else{
-            this.setState({success: true, result: false, error: false});
-        }
-     }
+    };
     handleSelect = e => {
         const { setFieldValue } = this.props;
 
@@ -71,7 +84,6 @@ class App extends Component {
         return (
             <ThemeProvider theme={theme}>
                 <RootContainer>
-
                     <FormCard>
                         <FormCardImage>
                             <ScrollHint />
@@ -79,7 +91,7 @@ class App extends Component {
 
                         <FormCardContent>
                             <CardHeader>
-                                <H1>Регистрация</H1>
+                                <H1>{!this.state.success?"Верификация":"Приказ"}</H1>
                                 <Logo>
                                     <img
                                         alt="Школа выживания 2018"
@@ -90,40 +102,60 @@ class App extends Component {
                                 </Logo>
                             </CardHeader>
                             <Fields>
-                                    {this.state.success?(
+                                {this.state.success ? (
+                                    <div>
+                                        <Label>
+                                            В соответствии с положением "О
+                                            порядке набора участников Школы
+                                            Выживания 2018" от лица главного
+                                            организатора приказываю считать, что{' '}
+                                            {this.state.valueOfFIO}{' '}
+                                            <b>
+                                                {this.state.result
+                                                    ? 'допущен'
+                                                    : 'не допущен'}{' '}
+                                            </b>к участию в проекте.
+                                            <br />
+                                            <br />
+                                        </Label>
+                                        <Stamp rotation="-8deg">
+                                            Ты {this.state.result ? '' : 'не'}{' '}
+                                            прошёл
+                                        </Stamp>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <Label required for="fio">
+                                            ФИО
+                                        </Label>
+                                        <TextInput
+                                            onChange={this.smthChange}
+                                            onBlur={handleBlur}
+                                            value={values.fio}
+                                            id="fio"
+                                            type="text"
+                                            name="fio"
+                                        />
+                                        {this.state.error && (
+                                            <Error>
+                                                Это поле обязательно для
+                                                заполнения
+                                            </Error>
+                                        )}
 
-                                <div>
-                                    <Label>
-                                    В соответствии с положением "О порядке набора участников Школы Выживания 2018" от лица главного организатора приказываю считать, что {this.state.valueOfFIO} <b>{this.state.result?"допущен": "не допущен"} </b>к участию в проекте.
-                                    <br/><br/></Label>
-                                <Stamp rotation="-8deg">
-                                    Ты {this.state.result ? '' : 'не'} прошёл
-                                </Stamp>
-                                </div>
-                                    ):(
-                                <div>
-                                    <Label required for="fio">
-                                        ФИО
-                                    </Label>
-                                    <TextInput
-                                        onChange={this.smthChange}
-                                        onBlur={handleBlur}
-                                        value={values.fio}
-                                        id="fio"
-                                        type="text"
-                                        name="fio"
-                                    />
-                                    {this.state.error&& <Error>Это поле обязательно для заполнения</Error>}
-
-                                <Submit onClick={this.handleSubmit} type="submit">
-                                    <Stamp>Отправить</Stamp>
-                                </Submit>
-                                <Disclamer>
-                                    * нажимая "Отправить" ты соглашаешься на
-                                    обработку персональных данных
-                                </Disclamer>
-
-                                </div>)}
+                                        <Submit
+                                            onClick={this.handleSubmit}
+                                            type="submit"
+                                        >
+                                            <Stamp>Отправить</Stamp>
+                                        </Submit>
+                                        <Disclamer>
+                                            * нажимая "Отправить" ты
+                                            соглашаешься на обработку
+                                            персональных данных
+                                        </Disclamer>
+                                    </div>
+                                )}
                             </Fields>
                         </FormCardContent>
                     </FormCard>
@@ -133,35 +165,4 @@ class App extends Component {
     }
 }
 
-export default withFormik({
-    mapPropsToValues: () => ({
-        fio: '',
-        fakultet: '',
-        kurs: '',
-        group: '',
-        phone: '',
-        vkLink: '',
-        experience: '',
-        otherExperience: '',
-        inventoryAvailiable: '',
-        fitnessLevel: '',
-        diseases: '',
-        allergies: '',
-        yourTrip: ''
-    }),
-    /* validate: (values, props) => {
-        const errors = {};
-        Object.entries(values).forEach(([field, value]) => {
-            if (!value || value === 'unset') {
-                errors[field] = 'Это поле обязательно для заполнения';
-            } else if (field === 'kurs' && value === 'Другой') {
-                errors[field] = 'Проект проводится только для первокурсников.';
-            }
-        });
-
-        return errors;
-    }, */
-    handleSubmit: (values, { setSubmitting, setStatus }) => {
-        
-    } 
-})(App); 
+export default withFormik({})(App);
