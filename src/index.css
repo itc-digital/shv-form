@@ -12,6 +12,9 @@ body {
 #app {
     height: 100%;
 }
+.myInput input {
+    color: red;
+}
 .myInput {
     width: 100%;
     padding-bottom: 5px;

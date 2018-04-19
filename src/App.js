@@ -1,7 +1,6 @@
 import { Component } from 'inferno';
 import { withFormik } from 'formik';
 import { ThemeProvider } from 'styled-components';
-import FuzzySearch from 'react-fuzzy';
 
 import theme from './theme';
 
@@ -24,18 +23,27 @@ import Disclamer from './Disclamer';
 import Popup from './Popup';
 import Stamp from './Stamp';
 import LinkButton from './LinkButton';
+import ResultSearch from './ResultSearch';
 import { H1, H2 } from './Typography';
 
 class App extends Component {
+    state = {
+        success: false,
+        result: false,
+        valueOfFIO: '',
+        error: false,
+        allPeople: [
+            'Лекомцев Дмитрий Константинович',
+            'Леко',
+            'Лекомц',
+            'лекоооо'
+        ],
+        participants: [
+            'Лекомцев Дмитрий Константинович',
+        ]
+    };
     constructor(props) {
         super(props);
-        this.state = {
-            success: false,
-            result: false,
-            valueOfFIO: '',
-            error: false,
-            participants: ['Лекомцев Дмитрий Константинович']
-        };
         //fetch(`${process.env.PUBLIC_URL}/api`).then(response =>{
         //    console.log(response);
         //    return response.json()
@@ -43,15 +51,14 @@ class App extends Component {
         //    this.setState({participants:data})
         //    console.log(this.state.participants);
         //})
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.smthChange = this.smthChange.bind(this);
     }
-    list = ["Лекомцев Дмитрий Константинович","Леко","Лекомц","лекоооо"]
-    smthChange = e => {
-        if (this.state.success != true) {
-            this.setState({ valueOfFIO: e.target.value });
-        }
+
+    handleResultSelect = result => {
+        this.setState({ valueOfFIO: this.state.allPeople[result] }, () => {
+            this.handleSubmit();
+        });
     };
+
     handleSubmit = e => {
         if (this.state.valueOfFIO.replace(/\s+/g, '') === '') {
             this.setState({ error: true });
@@ -63,6 +70,7 @@ class App extends Component {
             this.setState({ success: true, result: false, error: false });
         }
     };
+
     handleSelect = e => {
         const { setFieldValue } = this.props;
 
@@ -93,7 +101,11 @@ class App extends Component {
 
                         <FormCardContent>
                             <CardHeader>
-                                <H1>{!this.state.success?"Верификация":"Приказ"}</H1>
+                                <H1>
+                                    {!this.state.success
+                                        ? 'Верификация'
+                                        : 'Приказ'}
+                                </H1>
                                 <Logo>
                                     <img
                                         alt="Школа выживания 2018"
@@ -129,45 +141,24 @@ class App extends Component {
                                     <div>
                                         <Label required for="fio">
                                             ФИО
-                                        </Label><FuzzySearch
-  list={this.list}
-  onChange={this.smthChange}
-  value={this.state.valueOfFIO}
-  width="100%"
-  placeholder=""
-  ClassName="myInput"
-  resultsTemplate={(props, state, styles, clickHandler) => {
-    return state.results.map((i) => {
-      const style = state.selectedIndex === i ? styles.selectedResultStyle : styles.resultsStyle;
-      return (
-        <div
-          key={i}
-          onClick={()=>{this.setState({valueOfFIO:this.list[i]});console.log(this.state.valueOfFIO)}}
-        >
-          {this.list[i]}
-        </div>
-      );
-    });
-  }}
-/>
-<TextInput/>
+                                        </Label>
+                                        <ResultSearch
+                                            list={this.state.allPeople}
+                                            value={this.state.valueOfFIO}
+                                            onChange={this.smthChange}
+                                            onSelect={this.handleResultSelect}
+                                            onItemClick={
+                                                this.handleResultItemClick
+                                            }
+                                        />
                                         {this.state.error && (
                                             <Error>
                                                 Это поле обязательно для
                                                 заполнения
                                             </Error>
                                         )}
-
-                                        <Submit
-                                            onClick={this.handleSubmit}
-                                            type="submit"
-                                        >
-                                            <Stamp>Отправить</Stamp>
-                                        </Submit>
                                         <Disclamer>
-                                            * нажимая "Отправить" ты
-                                            соглашаешься на обработку
-                                            персональных данных
+                                            Начни вводить своё ФИО и выбери его в списке.
                                         </Disclamer>
                                     </div>
                                 )}
