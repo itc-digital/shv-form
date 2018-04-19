@@ -69,13 +69,15 @@ class App extends Component {
         this.list.forEach(cur => {
             const split_of_elem = cur.toLowerCase().split(' ');
             list_of_FIO.forEach(elem => {
-                if (split_of_elem.indexOf(elem) != -1) {
-                    q_of_pluses++;
-                    if (index_of_elems.indexOf(this.list.indexOf(cur)) == -1) {
-                        index_of_elems.push(this.list.indexOf(cur));
-                    }
-                }
-            });
+                split_of_elem.forEach(current=>{
+                    if (current.indexOf(elem) != -1) {
+                        q_of_pluses++;
+                        if (index_of_elems.indexOf(this.list.indexOf(cur)) == -1) {
+                            index_of_elems.push(this.list.indexOf(cur));
+                        }
+                }})
+            }
+            );
         });
         if (q_of_pluses == list_of_FIO.length) {
             return index_of_elems;
