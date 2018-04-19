@@ -33,6 +33,7 @@ class App extends Component {
             result: false,
             valueOfFIO: '',
             error: false,
+            people: '',
             participants: ['Лекомцев Дмитрий Константинович']
         };
         //fetch(`${process.env.PUBLIC_URL}/api`).then(response =>{
@@ -45,17 +46,47 @@ class App extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.smthChange = this.smthChange.bind(this);
     }
+    list = ['Лекомцев Дмитрий Константинович', 'Иван Салугин'];
     smthChange = e => {
         if (this.state.success != true) {
             this.setState({ valueOfFIO: e.target.value });
+            if (this.isInSpisok(e.target.value).length != 0) {
+                this.setState({
+                    people: this.isInSpisok(e.target.value).map(elem => {
+                        return this.list[elem];
+                    })
+                });
+                console.log(this.state.people);
+            }else if(this.state.people!=""){
+                this.setState({people: ""})
+            }
+        }
+    };
+    isInSpisok = name => {
+        const list_of_FIO = name.trim().toLowerCase().split(' ');
+        let index_of_elems = [];
+        let q_of_pluses = 0;
+        this.list.forEach(cur => {
+            const split_of_elem = cur.toLowerCase().split(' ');
+            list_of_FIO.forEach(elem => {
+                if (split_of_elem.indexOf(elem) != -1) {
+                    q_of_pluses++;
+                    if (index_of_elems.indexOf(this.list.indexOf(cur)) == -1) {
+                        index_of_elems.push(this.list.indexOf(cur));
+                    }
+                }
+            });
+        });
+        if (q_of_pluses == list_of_FIO.length) {
+            return index_of_elems;
+        } else {
+            return [];
         }
     };
     handleSubmit = e => {
         if (this.state.valueOfFIO.replace(/\s+/g, '') === '') {
             this.setState({ error: true });
-        } else if (
-            this.state.participants.indexOf(this.state.valueOfFIO) != -1
-        ) {
+        } else if (this.isInSpisok(this.state.valueOfFIO).length > 0) {
             this.setState({ success: true, result: true, error: false });
         } else {
             this.setState({ success: true, result: false, error: false });
@@ -91,7 +122,11 @@ class App extends Component {
 
                         <FormCardContent>
                             <CardHeader>
-                                <H1>{!this.state.success?"Верификация":"Приказ"}</H1>
+                                <H1>
+                                    {!this.state.success
+                                        ? 'Верификация'
+                                        : 'Приказ'}
+                                </H1>
                                 <Logo>
                                     <img
                                         alt="Школа выживания 2018"
@@ -142,6 +177,11 @@ class App extends Component {
                                                 заполнения
                                             </Error>
                                         )}
+                                        {this.state.people != ''
+                                            ? this.state.people.map(elem => {
+                                                  return <div onClick={()=>this.setState({valueOfFIO: elem,result:true, success: true})}>{elem}</div>;
+                                              })
+                                            : ''}
 
                                         <Submit
                                             onClick={this.handleSubmit}
