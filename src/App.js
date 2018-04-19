@@ -1,6 +1,7 @@
 import { Component } from 'inferno';
 import { withFormik } from 'formik';
 import { ThemeProvider } from 'styled-components';
+import FuzzySearch from 'react-fuzzy';
 
 import theme from './theme';
 
@@ -45,6 +46,7 @@ class App extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.smthChange = this.smthChange.bind(this);
     }
+    list = ["Лекомцев Дмитрий Константинович","Леко","Лекомц","лекоооо"]
     smthChange = e => {
         if (this.state.success != true) {
             this.setState({ valueOfFIO: e.target.value });
@@ -127,15 +129,28 @@ class App extends Component {
                                     <div>
                                         <Label required for="fio">
                                             ФИО
-                                        </Label>
-                                        <TextInput
-                                            onChange={this.smthChange}
-                                            onBlur={handleBlur}
-                                            value={values.fio}
-                                            id="fio"
-                                            type="text"
-                                            name="fio"
-                                        />
+                                        </Label><FuzzySearch
+  list={this.list}
+  onChange={this.smthChange}
+  value={this.state.valueOfFIO}
+  width="100%"
+  placeholder=""
+  ClassName="myInput"
+  resultsTemplate={(props, state, styles, clickHandler) => {
+    return state.results.map((i) => {
+      const style = state.selectedIndex === i ? styles.selectedResultStyle : styles.resultsStyle;
+      return (
+        <div
+          key={i}
+          onClick={()=>{this.setState({valueOfFIO:this.list[i]});console.log(this.state.valueOfFIO)}}
+        >
+          {this.list[i]}
+        </div>
+      );
+    });
+  }}
+/>
+<TextInput/>
                                         {this.state.error && (
                                             <Error>
                                                 Это поле обязательно для
