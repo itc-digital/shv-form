@@ -32,32 +32,29 @@ class App extends Component {
         result: false,
         valueOfFIO: '',
         error: false,
-        allPeople: [
-            'Лекомцев Дмитрий Константинович',
-            'Леко',
-            'Лекомц',
-            'лекоооо'
-        ],
-        participants: [
-            'Лекомцев Дмитрий Константинович',
-        ]
+        allPeople: [],
+        participants: []
     };
     constructor(props) {
         super(props);
-        fetch(`${process.env.PUBLIC_URL}/api/participants.json`).then(response =>{
-            console.log(response);
-            return response.json()
-        }).then(data =>{
-            this.setState({participants:data})
-            console.log(this.state.participants);
-        })
-        fetch(`${process.env.PUBLIC_URL}/api/allPeople.json`).then(response =>{
-            console.log(response);
-            return response.json()
-        }).then(data =>{
-            this.setState({allPeople:data})
-            console.log(this.state.allPeople);
-        })
+        fetch(`${process.env.PUBLIC_URL}/api/participants.json`)
+            .then(response => {
+                console.log(response);
+                return response.json();
+            })
+            .then(data => {
+                this.setState({ participants: data });
+                console.log(this.state.participants);
+            });
+        fetch(`${process.env.PUBLIC_URL}/api/allPeople.json`)
+            .then(response => {
+                console.log(response);
+                return response.json();
+            })
+            .then(data => {
+                this.setState({ allPeople: data });
+                console.log(this.state.allPeople);
+            });
     }
 
     handleResultSelect = result => {
@@ -165,7 +162,8 @@ class App extends Component {
                                             </Error>
                                         )}
                                         <Disclamer>
-                                            Начни вводить своё ФИО и выбери его в списке.
+                                            Начни вводить своё ФИО и выбери его
+                                            в списке.
                                         </Disclamer>
                                     </div>
                                 )}
